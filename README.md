@@ -48,6 +48,26 @@ module_id
     └── x86_64.so
 ```
 
+快捷命令
+
+```bash
+# 清理
+./gradlew clean
+# 编译并自动打包 Magisk 模块 zip 到 out/
+./gradlew assembleRelease
+# push 至设备
+./gradlew pushRelease
+# 刷入设备（默认使用 APatch）
+./gradlew flashRelease
+# 刷入设备并重启
+./gradlew flashAndRebootRelease
+
+# 指定 root 方案刷入
+./gradlew flashRelease -Proot=apatch    # APatch（默认）
+./gradlew flashRelease -Proot=magisk    # Magisk
+./gradlew flashRelease -Proot=ksu       # KernelSU
+```
+
 ## License
 
 Although the main Magisk project is licensed under GPLv3, the Zygisk API and its headers are not. Every source code in this repository is released under 0BSD (a public domain equivalent license), so you don't have to worry about any licensing issues while developing Zygisk modules.
