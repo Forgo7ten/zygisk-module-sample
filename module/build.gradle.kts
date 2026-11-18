@@ -8,11 +8,22 @@ android {
 
     defaultConfig {
         minSdk = 26
+
+        ndk {
+            abiFilters += setOf("arm64-v8a", "armeabi-v7a")
+        }
+
+        externalNativeBuild {
+            cmake {
+                arguments += "-DMODULE_NAME=example"
+            }
+        }
     }
 
     externalNativeBuild {
-        ndkBuild {
-            path("jni/Android.mk")
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
         }
     }
 }
